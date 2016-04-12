@@ -53,12 +53,18 @@ class Main {
 
 
         String subgroups = HTTP.body("https://" + company + ".logicmonitor.com/santaba/rpc/getHostGroupChildren?c=$company&u=$api_user&p=$api_pass&hostGroupId=$my_groupid")
-        println subgroups
+        //println subgroups
 
         def subgroupsJSON = new JsonSlurper().parseText(subgroups)
         def subgroupsList = subgroupsJSON.data
 
-        println "this is subgroupslist $subgroupsList"
+        subgroupsList.each{
+            println ""
+            println it
+            println ""
+        }
+
+        //println "this is subgroupslist $subgroupsList"
 
 // This FOR loop doesn't work yet.
 /*
