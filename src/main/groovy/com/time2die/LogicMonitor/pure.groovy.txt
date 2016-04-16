@@ -1,0 +1,45 @@
+import com.santaba.agent.groovyapi.expect.Expect;
+import com.santaba.agent.groovyapi.snmp.Snmp;
+import com.santaba.agent.groovyapi.http.*;
+import com.santaba.agent.groovyapi.jmx.*;
+import org.xbill.DNS.*;
+
+import groovy.json.JsonSlurper
+
+    def ping (String host){
+        println "hostname: $host"
+        //temporarily remmed out this section during testing to make it faster
+        def mycommand = """ping  -c 1 $host"""    // Create the command
+        def proc = mycommand.execute()                 // *execute* the command
+        proc.waitFor()                               // Wait for the command to finish
+        println "return code: ${ proc.exitValue()}" // get status and output
+
+        def buffer_contents = proc.in.text
+        println buffer_contents
+        def average = buffer_contents.split("Average = ")
+        if(average.)
+
+
+    }
+
+    def work(){
+        def my_displayname="EdgeRouter"
+
+        def company="suding"
+        def api_user="api4"
+        def api_pass="api.805"
+
+        def displayname = URLEncoder.encode(my_displayname, "UTF-8")
+
+        String hostInfo = HTTP.body("https://" + company + ".logicmonitor.com/santaba/rpc/getHost?c=$company&u=$api_user&p=$api_pass&displayName=$displayname")
+
+
+        def hostInfoJSON = new JsonSlurper().parseText(hostInfo)
+         def id = hostInfoJSON.data.id
+        String ips = hostInfoJSON.data.properties.get "system.ips"
+        ips.split(",").each {
+            ping (it)
+            println "ip:$it"
+        }
+}
+work()
