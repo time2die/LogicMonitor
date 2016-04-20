@@ -26,7 +26,7 @@ String ips = hostInfoJSON.data.properties.get "system.ips"
 
 def host = ips.split(",")[0]
 def pingCommand = """ping  -n $qty_of_pings_per_batch $host"""
-// pingCommand = """ping  -n $qty_of_pings_per_batch 192.168.1.1"""
+ pingCommand = """ping  -n $qty_of_pings_per_batch 192.168.1.1"""
 
 
 //    println "hostname: $host"
@@ -81,5 +81,3 @@ if(summLoss < threshold_ping_loss_percent && summAve < threshold_average_ms){
     println "workFine: $summAve $summLoss"
     return 0 ;
 }
-
-println "i am here"
