@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8883144c-4bde-4ca1-8203-b4542c927866" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/Main.groovy" afterPath="$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/Main.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/test.groovy" afterPath="$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/test.groovy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/AddSDTScript.groovy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/BruteForce.groovy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/DebugAddSDTScript.groovy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/WorkingPingScript.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/SplitPing.groovy" afterPath="$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/SplitPing.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="LogicMonitor.iws" />
@@ -40,7 +43,37 @@
         <entry file="file://$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/Main.groovy">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="47" column="28" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
+              <caret line="52" column="9" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddSDTScript.groovy" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/AddSDTScript.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DebugAddSDTScript.groovy" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/DebugAddSDTScript.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.09564293">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BruteForce.groovy" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/BruteForce.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -56,14 +89,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.groovy" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test.groovy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/test.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.1859723">
-              <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WorkingPingScript.groovy" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/WorkingPingScript.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -72,7 +115,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/SplitPing.groovy">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="57" column="1" selection-start-line="36" selection-start-column="0" selection-end-line="57" selection-end-column="1" />
+              <caret line="61" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -336,9 +379,13 @@
         <option value="$PROJECT_DIR$/url" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/pure.groovy.txt" />
-        <option value="$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/SplitPing.groovy" />
         <option value="$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/test.groovy" />
         <option value="$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/Main.groovy" />
+        <option value="$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/WorkingPingScript.groovy" />
+        <option value="$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/AddSDTScript.groovy" />
+        <option value="$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/BruteForce.groovy" />
+        <option value="$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/SplitPing.groovy" />
+        <option value="$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/DebugAddSDTScript.groovy" />
       </list>
     </option>
   </component>
@@ -383,7 +430,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches">
         <subPane>
           <PATH>
@@ -395,6 +441,7 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -468,24 +515,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="LogicMonitor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LogicMonitor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LogicMonitor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gradle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wrapper" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -824,12 +853,12 @@
       <updated>1460497651541</updated>
       <workItem from="1460497657036" duration="4529000" />
       <workItem from="1460797413760" duration="23503000" />
-      <workItem from="1461014626868" duration="2087000" />
+      <workItem from="1461014626868" duration="15446000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30119000" />
+    <option name="totallyTimeSpent" value="43478000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1046" extended-state="2" />
@@ -964,10 +993,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/SplitPing.groovy">
+    <entry file="file://$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/AddSDTScript.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="57" column="1" selection-start-line="36" selection-start-column="0" selection-end-line="57" selection-end-column="1" />
+          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -975,8 +1004,34 @@
     <entry file="file://$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/Main.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="28" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
+          <caret line="52" column="9" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/SplitPing.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="61" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/WorkingPingScript.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/test.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -988,13 +1043,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/test.groovy">
+    <entry file="file://$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/BruteForce.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1859723">
-          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/groovy/com/time2die/LogicMonitor/DebugAddSDTScript.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09564293">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

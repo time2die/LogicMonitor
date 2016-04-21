@@ -56,3 +56,7 @@ if(aproximate != null) {
     String average = aproximate.substring(aproximate.lastIndexOf('=') + 1, aproximate.length()).split("ms")[0].trim()
     println average
 }
+
+def future = Calendar.getInstance().add(Calendar.MINUTE,60).toString()
+def nowCal = Calendar.instance.toString()
+println "$nowCal:$future"
