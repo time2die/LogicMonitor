@@ -1,6 +1,5 @@
 import groovy.json.JsonSlurper
 
-//def minutes_of_SDT = 60
 def my_displayname = "EdgeRouter"
 def company = "suding"
 def api_user = "api4"
