@@ -10,12 +10,12 @@ def company = "suding"
 def api_user = "api4"
 def api_pass = "api.805"
 
-def qty_of_pings_per_batch = 3
-def qty_of_batches = 2
-def seconds_between_batches = 1
+def qty_of_pings_per_batch = 3;
+def qty_of_batches = 2;
+def seconds_between_batches = 1;
 
-def threshold_average_ms = 77
-def threshold_ping_loss_percent = 70
+def threshold_average_ms = 77;
+def threshold_ping_loss_percent = 70;
 
 
 def displayname = URLEncoder.encode(my_displayname, "UTF-8")
@@ -26,6 +26,8 @@ def id = hostInfoJSON.data.id
 String ips = hostInfoJSON.data.properties.get "system.ips"
 
 def host = ips.split(",")[0]
+print "hostname=$host\n"
+
 def pingCommand = """ping  -n $qty_of_pings_per_batch $host"""
 // you can use 192.168.1.1 to test negative scnario
 // pingCommand = """ping  -n $qty_of_pings_per_batch 192.168.1.1"""
@@ -39,6 +41,7 @@ for (int i = 0; i < qty_of_batches; i++) {
     proc.waitFor()
 
     def buffer_contents = proc.in.text
+//    println buffer_contents
 
     String lostString
     String aproximate
@@ -49,6 +52,14 @@ for (int i = 0; i < qty_of_batches; i++) {
             if (it.contains("Average"))
                 aproximate = it.trim()
         }
+    }
+
+    def pings = buffer_contents.split("\n")
+    pings = pings.findAll {it.length() > 2}
+    for(int pingIterator = 1 ; pingIterator < qty_of_pings_per_batch +1 ; pingIterator ++){
+        def ms = pings[pingIterator].split("time")[1].split(" ")[0]
+        ms = ms.substring(1)
+        print "${i*pingIterator} ping time $ms"
     }
 
     String lostMS = new StringBuffer(lostString.toString()).substring(lostString.indexOf('(') + 1, lostString.indexOf(')')).split("loss")[0].split("%")[0]
@@ -69,9 +80,12 @@ summAve = summAve / qty_of_batches
 summLoss = summLoss / qty_of_batches
 
 
+print "Average ping time (ms):$summAve\n"
+print "Threshold_average_ms: $threshold_average_ms\n"
+print "Loss_percent:$summLoss\n"
+
 if (summLoss < threshold_ping_loss_percent && summAve < threshold_average_ms) {
-    println "workFine: $summAve $summLoss"
-    //fine ping scenario
+    print "Average ping time and loss percent are under threshold, so exiting\n"
     return;
 }
 
