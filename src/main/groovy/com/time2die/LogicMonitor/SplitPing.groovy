@@ -36,13 +36,17 @@ Approximate round trip times in milli-seconds:
 //
 //"""
 
-def pings = text.split("\n")
+/*def pings = text.split("\n")
 pings = pings.findAll {it.length() > 2}
 for(int i = 1 ; i < 4 ; i ++){
     def ms = pings[i].split("time")[1].split(" ")[0]
     ms = ms.substring(1)
     println ">${ms}<"
-}
+}*/
+
+def ids = [86, 86, 77, 86, 77, 86] ;
+int id = 77
+println ids.contains(id)
 //
 //
 //String lostString
