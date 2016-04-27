@@ -42,19 +42,23 @@ class AllScriptDebug {
         String ips = hostInfoJSON.data.properties.get "system.ips"
 
         def host = ips.split(",")[0]
+
+        println "hostname=$host"
         def pingCommand = """ping  -n $qty_of_pings_per_batch $host"""
-        // you can use 192.168.1.1 to test negative scnario
-        // pingCommand = """ping  -n $qty_of_pings_per_batch 192.168.1.1"""
+
+//        pingCommand = """ping  -n $qty_of_pings_per_batch 192.168.1.1"""
 
         int summLoss = 0
         int summAve = 0
 
-
+//cycles for ping
         for (int i = 0; i < qty_of_batches; i++) {
             def proc = pingCommand.execute()
             proc.waitFor()
+    println "return code: ${proc.exitValue()}"
 
             def buffer_contents = proc.in.text
+            println buffer_contents
 
             String lostString
             String aproximate
@@ -67,13 +71,18 @@ class AllScriptDebug {
                 }
             }
 
+println lostString
+//println aproximate
+
             String lostMS = new StringBuffer(lostString.toString()).substring(lostString.indexOf('(') + 1, lostString.indexOf(')')).split("loss")[0].split("%")[0]
+//    println "lostMS:$lostMS"
+
             summLoss = summLoss + Integer.valueOf(lostMS)
 
             String averagef
             if (aproximate != null) {
                 averagef = aproximate.substring(aproximate.lastIndexOf('=') + 1, aproximate.length()).split("ms")[0].trim()
-
+//        println "average:$averagef"
                 summAve = summAve + Integer.valueOf(averagef)
             }
 
@@ -84,12 +93,14 @@ class AllScriptDebug {
         summAve = summAve / qty_of_batches
         summLoss = summLoss / qty_of_batches
 
+//println "sumAve:$summAve"
+//println "sumLose:$summLoss"
 
-        if (summLoss < threshold_ping_loss_percent && summAve < threshold_average_ms) {
-            println "workFine: $summAve $summLoss"
-            //fine ping scenario
-            return;
+        if(summLoss < threshold_ping_loss_percent && summAve < threshold_average_ms){
+            println "Average ping time and loss percent are under threshold, so exiting"
+            return  ;
         }
+
 
         def SDTTimeInMinute = 60
 

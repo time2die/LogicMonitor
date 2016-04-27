@@ -5,18 +5,8 @@ import org.xbill.DNS.*
 
 import java.text.SimpleDateFormat
 
-
 boolean printDebugOutput = false
 boolean useFakePingCommand = false
-boolean writeDebugOutputToFile = false
-
-def fileName = new Date().toGMTString().trim().replace(' ', '_').replace(':', '-') + ".log"
-File debugOutputFile = new File(fileName)
-
-if (printDebugOutput && writeDebugOutputToFile) {
-    print "start write to file:$fileName"
-}
-
 
 def my_displayname = "EdgeRouter"
 def displayname = URLEncoder.encode(my_displayname, "UTF-8")
@@ -31,17 +21,12 @@ def seconds_between_batches = 1
 def threshold_average_ms = 77
 def threshold_ping_loss_percent = 70
 
-String readReq(String url, boolean needDebug, boolean needDebugToFile, File debugFile) {
+String readReq(String url, boolean needDebug) {
     String req = HTTP.body(url)
 
     if (needDebug) {
         print "request: $url\n"
         print "respone: $req\n"
-    }
-
-    if (needDebugToFile) {
-        debugFile << "request: $url\n"
-        debugFile << "respone: $req\n"
     }
 
     return req;
@@ -51,8 +36,7 @@ Object parseJSONObject(String data) {
     return new JsonSlurper().parseText(data)
 }
 
-def hostInfoJSON = parseJSONObject(readReq("https://" + company + ".logicmonitor.com/santaba/rpc/getHost?c=$company&u=$api_user&p=$api_pass&displayName=$displayname",
-        printDebugOutput, writeDebugOutputToFile, debugOutputFile))
+def hostInfoJSON = parseJSONObject(readReq("https://" + company + ".logicmonitor.com/santaba/rpc/getHost?c=$company&u=$api_user&p=$api_pass&displayName=$displayname", printDebugOutput))
 
 String ips = hostInfoJSON.data.properties.get "system.ips"
 
@@ -175,16 +159,15 @@ String devGroupBody = HTTP.body("https://" + company + ".logicmonitor" +
         ".com/santaba/rpc/getHostGroup?c=$company&u=$api_user&p=$api_pass&hostGroupId=$my_groupid")
 //        println "dev:$devGroupBody"
 
-String subgroupsReq = readReq("https://$company" + ".logicmonitor.com/santaba/rpc/getHostGroupChildren?c=$company&u=$api_user&p=$api_pass&hostGroupId=$my_groupid",
-        printDebugOutput, writeDebugOutputToFile, debugOutputFile)
+String subgroupsReq = readReq("https://$company"+".logicmonitor.com/santaba/rpc/getHostGroupChildren?c=$company&u=$api_user&p=$api_pass&hostGroupId=$my_groupid",printDebugOutput)
 def subgroups = parseJSONObject(subgroupsReq).data.items
 
 //        println subgroups
 def subgroupListName = []
 def subgroupsIds = []
 subgroups.each {
-    String subGroupInfoReq = readReq("https://" + company + ".logicmonitor.com/santaba/rpc/getHostGroup?c=$company&u=$api_user&p=$api_pass&hostGroupId=${it.id}",
-            printDebugOutput, writeDebugOutputToFile, debugOutputFile)
+    //String subGroupInfoReq = HTTP.body("https://" + company + ".logicmonitor.com/santaba/rpc/getHostGroup?c=$company&u=$api_user&p=$api_pass&hostGroupId=${it.id}")
+    String subGroupInfoReq = readReq("https://" + company + ".logicmonitor.com/santaba/rpc/getHostGroup?c=$company&u=$api_user&p=$api_pass&hostGroupId=${it.id}",printDebugOutput)
     def subGroupInfo = parseJSONObject(subGroupInfoReq).data
 
     if (subGroupInfo != null) {
@@ -200,8 +183,7 @@ subgroupListName.each {
 boolean return3 = false;
 subgroupsIds.each {
 
-    String sdts = readReq("https://" + company + ".logicmonitor.com/santaba/rpc/getSDTs?c=$company&u=$api_user&p=$api_pass&=hostGroupId=$it",
-            printDebugOutput, writeDebugOutputToFile, debugOutputFile)
+    String sdts =  readReq("https://" + company + ".logicmonitor.com/santaba/rpc/getSDTs?c=$company&u=$api_user&p=$api_pass&=hostGroupId=$it", printDebugOutput)
 
     def sdtsResposne = parseJSONObject(sdts).data
     def sdtsList = sdtsResposne.hostGroupId
@@ -220,7 +202,7 @@ subgroupsIds.each {
                 "&endDay=${sdtEndTime.get(Calendar.DAY_OF_MONTH)}" +
                 "&endHour=${sdtEndTime.get(Calendar.HOUR_OF_DAY)}" +
                 "&endMinute=${sdtEndTime.get(Calendar.MINUTE)}")
-        String setSdts = readReq(setSdtBody, printDebugOutput, writeDebugOutputToFile, debugOutputFile)
+        String setSdts = readReq(setSdtBody,printDebugOutput)
 
         SimpleDateFormat df = new SimpleDateFormat();
         //2016:04:16:11:23
@@ -231,7 +213,7 @@ subgroupsIds.each {
     if (sdtsList.empty || sdtsList.contains(it)) {
 
         def isEffective = sdtsResposne.isEffective
-        def isEffectiveIndex = sdtsList.indexOf(it)
+        def isEffectiveIndex = [].indexOf(it)
         def effective = isEffective[isEffectiveIndex]
         if (effective) {
             print "SDT is already set on groupID $it, so don’t set SDT\n"

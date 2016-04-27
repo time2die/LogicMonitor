@@ -18,45 +18,55 @@ Approximate round trip times in milli-seconds:
     Minimum = 0ms, Maximum = 4ms, Average = 1ms
 """
 
-text = """Pinging 192.168.1.1 with 32 bytes of data:
+////
+////text = """Pinging 192.168.1.1 with 32 bytes of data:
+////
+////Request timed out.
+////
+////Request timed out.
+////
+////Request timed out.
+//
+//
+//
+//Ping statistics for 192.168.1.1:
+//
+//    Packets: Sent = 3, Received = 0, Lost = 3 (100% loss),
+//
+//
+//"""
 
-Request timed out.
+/*def pings = text.split("\n")
+pings = pings.findAll {it.length() > 2}
+for(int i = 1 ; i < 4 ; i ++){
+    def ms = pings[i].split("time")[1].split(" ")[0]
+    ms = ms.substring(1)
+    println ">${ms}<"
+}*/
 
-Request timed out.
-
-Request timed out.
-
-
-
-Ping statistics for 192.168.1.1:
-
-    Packets: Sent = 3, Received = 0, Lost = 3 (100% loss),
-
-
-"""
-
-String lostString
-String aproximate
-text.trim().split("\n").each {
-    if(it.length() > 1) {
-        if (it.contains("loss"))
-            lostString = it.trim()
-        if(it.contains("Average"))
-            aproximate = it.trim()
-    }
-}
-
-println lostString
-println aproximate
-
-String lostMS = new StringBuffer(lostString.toString()).substring(lostString.indexOf('(')+1,lostString.indexOf(')')).split("loss")[0].split("%")[0]
-println lostMS
-
-if(aproximate != null) {
-    String average = aproximate.substring(aproximate.lastIndexOf('=') + 1, aproximate.length()).split("ms")[0].trim()
-    println average
-}
-
-def future = Calendar.getInstance().add(Calendar.MINUTE,60).toString()
-def nowCal = Calendar.instance.toString()
-println "$nowCal:$future"
+def ids = [86, 86, 77, 86, 77, 86] ;
+int id = 77
+println ids.contains(id)
+//
+//
+//String lostString
+//String aproximate
+//text.trim().split("\n").each {
+//    if(it.length() > 1) {
+//        if (it.contains("loss"))
+//            lostString = it.trim()
+//        if(it.contains("Average"))
+//            aproximate = it.trim()
+//    }
+//}
+//
+//println lostString
+//println aproximate
+//
+//String lostMS = new StringBuffer(lostString.toString()).substring(lostString.indexOf('(')+1,lostString.indexOf(')')).split("loss")[0].split("%")[0]
+//println lostMS
+//
+//if(aproximate != null) {
+//    String average = aproximate.substring(aproximate.lastIndexOf('=') + 1, aproximate.length()).split("ms")[0].trim()
+//    println average
+//}
